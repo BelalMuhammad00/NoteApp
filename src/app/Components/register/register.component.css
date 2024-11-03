@@ -1,0 +1,10 @@
+.image{
+  background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,.5)) center no-repeat;
+  background-image: url('../../../assets/note.jpg');
+  background-size: cover;
+  height: 100vh;
+}
+
+section{
+  height: calc(100vh-70px);
+}

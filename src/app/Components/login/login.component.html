@@ -1,0 +1,44 @@
+<section class="min-vh-100 d-flex justify-content-center align-items-center">
+  <div class="row g-0 shadow rounded overflow-hidden align-items-center w-100">
+  <div class="col-lg-8">
+    <div class="image"></div>
+    
+  </div>
+  <div class="col-lg-4">
+  <h1 class="text-center pt-4"> Login</h1>
+
+    <form class="px-4" [formGroup]="Formlogin" (ngSubmit)="login(Formlogin)">
+
+
+      <mat-form-field class="example-full-width w-100 py-2" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input formControlName="email" type="email" matInput
+               placeholder="Ex. Belal@gmail.com">
+        <mat-hint>Errors appear instantly!</mat-hint>
+          <mat-error *ngIf="Formlogin.get('email')?.hasError('required')">email <strong>required</strong></mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width w-100 py-2" appearance="outline">
+        <mat-label>Enter your password</mat-label>
+        <input formControlName="password" matInput [type]="hide() ? 'password' : 'text'" />
+        <button
+        type="button"
+          mat-icon-button
+          matSuffix
+          (click)="clickEvent($event)"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide()"
+        >
+          <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="Formlogin.get('password')?.hasError('required')">password<strong>required</strong></mat-error>
+
+      </mat-form-field>
+
+
+      <button [disabled]="Formlogin.invalid" mat-flat-button color="primary" class="w-100 rounded-0">Login</button>
+    </form>
+
+  </div>
+  </div>
+  </section>

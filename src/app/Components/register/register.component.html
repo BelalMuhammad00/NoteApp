@@ -1,0 +1,65 @@
+<section class="min-vh-100 d-flex justify-content-center align-items-center">
+<div class="row g-0 shadow rounded overflow-hidden align-items-center w-100">
+<div class="col-lg-8">
+  <div class="image  d-md-block"></div>
+</div>
+<div class="col-lg-4">
+<h1 class="text-center pt-4"> Register</h1>
+
+  <form class="px-4" [formGroup]="FormRegister" (ngSubmit)="register(FormRegister)">
+
+    <mat-form-field class="example-full-width w-100 py-2" appearance="outline">
+      <mat-label>First Name</mat-label>
+      <input formControlName="first_name" type="text" matInput
+             placeholder="Ex. Belal">
+      <mat-hint>Errors appear instantly!</mat-hint>
+        <mat-error *ngIf="FormRegister.get('first_name')?.hasError('required')">First Name <strong>required</strong></mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width w-100 py-2" appearance="outline">
+      <mat-label>Last Name</mat-label>
+      <input formControlName="last_name" type="text" matInput
+             placeholder="Ex. Belal">
+      <mat-hint>Errors appear instantly!</mat-hint>
+        <mat-error *ngIf="FormRegister.get('last_name')?.hasError('required')">Last Name <strong>required</strong></mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width w-100 py-2" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input formControlName="email" type="email" matInput
+             placeholder="Ex. Belal@gmail.com">
+      <mat-hint>Errors appear instantly!</mat-hint>
+        <mat-error *ngIf="FormRegister.get('email')?.hasError('required')">email <strong>required</strong></mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width w-100 py-2" appearance="outline">
+      <mat-label>Enter your password</mat-label>
+      <input formControlName="password" matInput [type]="hide() ? 'password' : 'text'" />
+      <button
+      type="button"
+        mat-icon-button
+        matSuffix
+        (click)="clickEvent($event)"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide()"
+      >
+        <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="FormRegister.get('password')?.hasError('required')">password<strong>required</strong></mat-error>
+
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width w-100 py-2" appearance="outline">
+      <mat-label>age</mat-label>
+      <input formControlName="age" type="number" matInput
+             placeholder="Ex. 20">
+      <mat-hint>Errors appear instantly!</mat-hint>
+        <mat-error *ngIf="FormRegister.get('age')?.hasError('required')">age <strong>required</strong></mat-error>
+    </mat-form-field>
+
+    <button [disabled]="FormRegister.invalid" mat-flat-button color="primary" class="w-100 rounded-0">Register</button>
+  </form>
+
+</div>
+</div>
+</section>
